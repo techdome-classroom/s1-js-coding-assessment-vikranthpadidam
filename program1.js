@@ -21,7 +21,7 @@ const getTotalIsles = function (grid) {
       }
   }
 
-  function bfs(r, c) {
+  function codehelper(r, c) {
     if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === 'W') {
         return;
     }
@@ -30,8 +30,6 @@ const getTotalIsles = function (grid) {
         dfs(r + dr, c + dc);
     }
 }
-
-bfs()
 
   let islandCount = 0;
 
