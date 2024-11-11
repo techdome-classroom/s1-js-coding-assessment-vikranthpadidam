@@ -22,13 +22,8 @@ const getTotalIsles = function (grid) {
   }
 
   function codehelper(x) {
-    if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === 'W') {
-        return;
-    }
-    grid[r][c] = 'W';
-    for (let [dr, dc] of directions) {
-        dfs(r + dr, c + dc);
-    }
+  
+    
 }
 
   let islandCount = 0;
