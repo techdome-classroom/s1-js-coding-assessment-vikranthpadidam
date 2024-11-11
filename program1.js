@@ -21,7 +21,7 @@ const getTotalIsles = function (grid) {
       }
   }
 
-  function codehelper(r, c) {
+  function codehelper(x) {
     if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === 'W') {
         return;
     }
