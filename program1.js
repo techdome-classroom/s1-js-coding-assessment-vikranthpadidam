@@ -31,6 +31,8 @@ const getTotalIsles = function (grid) {
     }
 }
 
+bfs()
+
   let islandCount = 0;
 
   for (let r = 0; r < rows; r++) {
