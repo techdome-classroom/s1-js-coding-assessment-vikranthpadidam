@@ -12,22 +12,19 @@ const getTotalIsles = function (grid) {
   ];
 
   function dfs(r, c) {
-      if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === 'W') {
-          return;
-      }
+      const stack = [[r, c]];
       grid[r][c] = 'W';
-      for (let [dr, dc] of directions) {
-          dfs(r + dr, c + dc);
+      while (stack.length > 0) {
+          const [x, y] = stack.pop();
+          for (let [dx, dy] of directions) {
+              const newX = x + dx, newY = y + dy;
+              if (newX >= 0 && newY >= 0 && newX < rows && newY < cols && grid[newX][newY] === 'L') {
+                  grid[newX][newY] = 'W';
+                  stack.push([newX, newY]);
+              }
+          }
       }
   }
-
-  function codehelper(x) {
-    x+=5;
-    x-=10;
-}
-
-codehelper(13);
-
 
   let islandCount = 0;
 
