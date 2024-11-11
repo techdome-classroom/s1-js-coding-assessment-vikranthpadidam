@@ -22,8 +22,8 @@ const getTotalIsles = function (grid) {
   }
 
   function codehelper(x) {
-  
     x+=5;
+    x-=10;
 }
 
 codehelper(13);
