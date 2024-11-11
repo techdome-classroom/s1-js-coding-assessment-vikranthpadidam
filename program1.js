@@ -1,25 +1,25 @@
-const getTotalIsles = function (grid) {
-  if (!grid || grid.length === 0) return 0;
+const countIslands = function (map) {
+  if (!map || map.length === 0) return 0;
 
-  const rows = grid.length;
-  const cols = grid[0].length;
+  const numRows = map.length;
+  const numCols = map[0].length;
 
-  const directions = [
+  const moves = [
       [-1, 0],
       [1, 0],
       [0, -1],
       [0, 1]
   ];
 
-  function dfs(r, c) {
-      const stack = [[r, c]];
-      grid[r][c] = 'W';
+  function explore(x, y) {
+      const stack = [[x, y]];
+      map[x][y] = 'W';
       while (stack.length > 0) {
-          const [x, y] = stack.pop();
-          for (let [dx, dy] of directions) {
-              const newX = x + dx, newY = y + dy;
-              if (newX >= 0 && newY >= 0 && newX < rows && newY < cols && grid[newX][newY] === 'L') {
-                  grid[newX][newY] = 'W';
+          const [currentX, currentY] = stack.pop();
+          for (let [dx, dy] of moves) {
+              const newX = currentX + dx, newY = currentY + dy;
+              if (newX >= 0 && newY >= 0 && newX < numRows && newY < numCols && map[newX][newY] === 'L') {
+                  map[newX][newY] = 'W';
                   stack.push([newX, newY]);
               }
           }
@@ -28,10 +28,10 @@ const getTotalIsles = function (grid) {
 
   let islandCount = 0;
 
-  for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-          if (grid[r][c] === 'L') {
-              dfs(r, c);
+  for (let i = 0; i < numRows; i++) {
+      for (let j = 0; j < numCols; j++) {
+          if (map[i][j] === 'L') {
+              explore(i, j);
               islandCount++;
           }
       }
@@ -40,4 +40,4 @@ const getTotalIsles = function (grid) {
   return islandCount;
 };
 
-module.exports = getTotalIsles;
+module.exports = countIslands;
