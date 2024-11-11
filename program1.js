@@ -23,8 +23,11 @@ const getTotalIsles = function (grid) {
 
   function codehelper(x) {
   
-    
+    x+=5;
 }
+
+codehelper(13);
+
 
   let islandCount = 0;
 
